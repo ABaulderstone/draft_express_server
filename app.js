@@ -8,7 +8,8 @@ const port = 3000;
 
 app.use(express.json());
 
-app.get('/', loggingMiddleware, (req, res) => {
+app.use(loggingMiddleware);
+app.get('/', (req, res) => {
   res.send('Hello, world');
 });
 
