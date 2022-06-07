@@ -3,7 +3,6 @@ const req = require('express/lib/request');
 
 const { randomPair } = require('../utils');
 const { createStudentValidation } = require('./validations');
-const parseId = require('../middleware/parseid');
 
 // set up data
 let students = [
@@ -35,7 +34,7 @@ router.get('/', (req, res) => {
 // apply validation just on this route
 router.post('/', createStudentValidation, (req, res) => {
   const { name, age } = req.body;
-  const newStudent = { id: ++id, name, body };
+  const newStudent = { id: ++id, name, age };
   students.push(newStudent);
   res.status(201).send(newStudent);
 });
